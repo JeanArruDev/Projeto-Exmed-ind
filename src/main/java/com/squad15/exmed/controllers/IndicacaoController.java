@@ -26,10 +26,4 @@ public class IndicacaoController {
         }
     }
 
-    @GetMapping("/contar")
-    public ResponseEntity<Long> contarIndicacoes(
-            @RequestParam("codigoIndicacao") String codigoIndicacao) {
-        Long contagem = indicacaoService.contarIndicacoesPorCodigo(codigoIndicacao);
-        return ResponseEntity.ok(contagem);
-    }
 }

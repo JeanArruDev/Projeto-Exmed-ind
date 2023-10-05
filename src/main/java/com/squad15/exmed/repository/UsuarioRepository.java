@@ -14,4 +14,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     List<Usuario> findBySexo(char sexo);
     List<Usuario> findByIdade(int idade);
     Usuario findByCodigoIndicacao(String codigoIndicacao);
+    List<Usuario> countByCodigoEntrada(String codigoIndicacao);
 }

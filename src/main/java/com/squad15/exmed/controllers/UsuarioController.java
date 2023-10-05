@@ -1,6 +1,5 @@
 package com.squad15.exmed.controllers;
 
-import com.squad15.exmed.config.DadosTokenJWT;
 import com.squad15.exmed.dto.DadosAutenticacao;
 import com.squad15.exmed.models.Usuario;
 import com.squad15.exmed.service.UsuarioService;
@@ -19,13 +18,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping
-    public ResponseEntity<DadosTokenJWT> cadastrar(
-            @RequestBody @Valid DadosAutenticacao dados) {
-        usuarioService.cadastrar(dados);
-
-        return null;
-    }
 
     @GetMapping
     public List<Usuario> listarUsuarios(){
@@ -53,6 +45,11 @@ public class UsuarioController {
     @GetMapping("/porIdade/{idade}")
     public ResponseEntity<List<Usuario>> buscarUsuariosPorIdade(@PathVariable int idade) {
         List<Usuario> usuarios = usuarioService.buscarUsuariosPorIdade(idade);
+        return ResponseEntity.ok(usuarios);
+    }
+    @GetMapping("/Indicacao/{codigoIndicacao}")
+    public ResponseEntity<List<Usuario>> countByCodigoEntrada(String codigoIndicacao){
+        List<Usuario> usuarios = usuarioService.countByCodigoEntrada(codigoIndicacao);
         return ResponseEntity.ok(usuarios);
     }
 }

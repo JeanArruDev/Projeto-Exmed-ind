@@ -28,6 +28,7 @@ public class Usuario  implements UserDetails {
     @Email
     private String email;
     private String codigoIndicacao;
+    private String codigoEntrada;
     private String nome;
     private String sexo;
     private Date dataNascimento;

@@ -27,8 +27,8 @@ public class UsuarioService {
     @Transactional
     public void cadastrar(DadosAutenticacao dadosAutenticacao){
         Usuario usuario = new Usuario();
-        usuario.setSenha(encoder.encode(dadosAutenticacao.getSenha()));
-        usuario.setLogin(dadosAutenticacao.getLogin());
+        usuario.setSenha(encoder.encode(dadosAutenticacao.senha()));
+        usuario.setLogin(dadosAutenticacao.login());
         usuario.setDataCadastro(new Date());
         String codIndicacao = GerarCodIndicacao.gerarCodigoIndicacao();
         usuario.setCodigoIndicacao(codIndicacao);
@@ -54,6 +54,7 @@ public class UsuarioService {
         return usuarioRepository.findByIdade(idade);
     }
 
-
+    public List<Usuario> countByCodigoEntrada (String codigoIndicacao) {return usuarioRepository.countByCodigoEntrada(codigoIndicacao);
+    }
 }
 

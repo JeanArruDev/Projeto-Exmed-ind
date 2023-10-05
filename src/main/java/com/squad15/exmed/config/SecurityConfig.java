@@ -2,7 +2,6 @@ package com.squad15.exmed.config;
 
 
 import com.squad15.exmed.filter.SecurityFilter;
-import com.squad15.exmed.service.AutenticacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,15 +19,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
+/*
     @Autowired
     private SecurityFilter securityFilter;
 
     @Autowired
     private AutenticacaoService autenticacaoService;
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+   /* public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req -> {
@@ -51,4 +48,15 @@ public class SecurityConfig {
     {
         return new BCryptPasswordEncoder();
     }
+}
+*/
+
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable());
+        http.authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        return http.build();
+    }
+
 }

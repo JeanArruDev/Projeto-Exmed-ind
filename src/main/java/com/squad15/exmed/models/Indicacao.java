@@ -19,11 +19,7 @@ public class Indicacao {
     @JoinColumn(name = "usuario_indicado_id")
     private Usuario usuarioIndicado;
 
-    @Column(name = "codigo_indicacao")
-    private String codigoIndicacao;
 
-    public void setCodigoIndicacao(String codigoIndicacao) {
-        this.codigoIndicacao = codigoIndicacao;
+    public void setReceberCodIndicacao(String codigoIndicacao) {
     }
 }
-

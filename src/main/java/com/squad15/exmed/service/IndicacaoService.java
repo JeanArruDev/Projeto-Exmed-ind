@@ -35,9 +35,7 @@ public class IndicacaoService {
         }
 
         Indicacao indicacao = new Indicacao();
-        // Se você quiser manter o código de indicação em Indicacao, adicione um campo e um setter apropriado.
-        // Caso contrário, remova a próxima linha:
-        indicacao.setCodigoIndicacao(codigoIndicacao);
+        indicacao.setReceberCodIndicacao(codigoIndicacao);
         indicacao.setUsuarioIndicador(usuarioIndicador);
         indicacao.setUsuarioIndicado(usuarioIndicado);
         indicacaoRepository.save(indicacao);
@@ -45,8 +43,7 @@ public class IndicacaoService {
         return true;
     }
 
-    public Long contarIndicacoesPorCodigo(String codigoIndicacao) {
-        // Use o método renomeado do repositório
-        return indicacaoRepository.countByUsuarioIndicador(codigoIndicacao);
-    }
+
+
 }
+
