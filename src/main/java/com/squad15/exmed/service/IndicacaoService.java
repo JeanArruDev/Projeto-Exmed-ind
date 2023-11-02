@@ -7,7 +7,7 @@ import com.squad15.exmed.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Date;
 
 @Service
 public class IndicacaoService {
@@ -29,21 +29,26 @@ public class IndicacaoService {
             return false;
         }
 
-        boolean usuarioJaIndicado = indicacaoRepository.existsByUsuarioIndicado(usuarioIndicado);
+        boolean usuarioJaIndicado = indicacaoRepository.existsByIndicado(usuarioIndicado);
         if (usuarioJaIndicado) {
             return false;
         }
 
         Indicacao indicacao = new Indicacao();
-        indicacao.setReceberCodIndicacao(codigoIndicacao);
-        indicacao.setUsuarioIndicador(usuarioIndicador);
-        indicacao.setUsuarioIndicado(usuarioIndicado);
+        indicacao.setIndicador(usuarioIndicador);
+        indicacao.setIndicado(usuarioIndicado);
+        indicacao.setDataIndicacao(new Date());
+
         indicacaoRepository.save(indicacao);
 
         return true;
     }
 
-
-
+    public Long contarIndicacoesPorCodigo(String codigoIndicacao) {
+        Usuario usuario = usuarioRepository.findByCodigoIndicacao(codigoIndicacao);
+        if (usuario == null) {
+            return 0L;
+        }
+        return indicacaoRepository.countByIndicador(usuario);
+    }
 }
-

@@ -6,5 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IndicacaoRepository extends JpaRepository<Indicacao, Long> {
 
-    boolean existsByUsuarioIndicado(Usuario usuarioIndicado);
+    boolean existsByIndicado(Usuario indicado);
+
+    Long countByIndicador(Usuario indicador);
+
 }

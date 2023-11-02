@@ -54,7 +54,6 @@ public class UsuarioService {
         return usuarioRepository.findByIdade(idade);
     }
 
-    public List<Usuario> countByCodigoEntrada (String codigoIndicacao) {return usuarioRepository.countByCodigoEntrada(codigoIndicacao);
-    }
+
 }
 
